@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Upload CSV</title>
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-app.js"></script>
+
+    <!-- Firebase Realtime Database -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-database.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyAdWDlfS78Wua8tA-AMgSv8-rFovUbKZg4",
+
+    authDomain: "comma-1c541.firebaseapp.com",
+
+    databaseURL: "https://comma-1c541-default-rtdb.firebaseio.com",
+
+    projectId: "comma-1c541",
+
+    storageBucket: "comma-1c541.appspot.com",
+
+    messagingSenderId: "161046185569",
+
+    appId: "1:161046185569:web:698833bc31ecff49a08c20",
+
+    measurementId: "G-MS1BT0D1Q6"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+
+      // Get a reference to the database service
+      var database = firebase.database();
+
+      function saveToDatabase() {
+        var text = 0 +","+ document.getElementById("textArea").value;
+        database.ref().set({
+          text: text
+        });
+        alert("Saved!");
+      }
+    </script>
+    <style>
+      #textArea {
+        height: 200px;
+        width: 80%;
+        font-size: 16px;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+
+      #saveButton {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      #saveButton:hover {
+        background-color: #3e8e41;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Upload CSV</h1>
+    <textarea id="textArea" placeholder="Enter your text here"></textarea>
+    <br><br>
+    <button id="saveButton" onclick="saveToDatabase()">Save</button>
+  </body>
+</html>
